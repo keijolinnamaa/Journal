@@ -1,0 +1,13 @@
+{% extends "journals/base.html" %}
+{% load bootstrap5 %}
+
+{% block page_header %}
+  <h1>You have been logged out. Thank you for visiting!</h1>
+{% endblock page_header %}
+
+{% block content %}
+  <a class="btn btn-primary btn-lg mt-1"
+  href="{% url 'users:register' %}">Register &raquo;</a>
+  <a class="btn btn-primary btn-lg mt-1"
+  href="{% url 'users:login' %}">Log in &raquo;</a>
+{% endblock content %}

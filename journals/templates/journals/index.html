@@ -1,0 +1,23 @@
+{% extends "journals/base.html" %}
+
+{% block page_header %}
+  <div class="p-3 mb-4 bg-light border rounded-3">
+    <div class="container-fluid py-4">
+      <h1 class="display-3">Journal helps you to keep track of any topic you choose, eg. training, diet, learning or just daily thoughts.</h1>
+      
+      <p class="lead">Make your own Journal, and keep a list of the
+      topics you want. Whenever you get an idea or learn something new
+      about a topic, make an entry summarizing your thoughts or what you've learned. Or for example keep track of your training or diet.</p>
+      
+      {% if user.is_authenticated %}
+      <a class="btn btn-primary btn-lg mt-1"
+          href="{% url 'journals:topics' %}">Topics &raquo;</a>
+      {% else %}
+      <a class="btn btn-primary btn-lg mt-1"
+          href="{% url 'users:register' %}">Register &raquo;</a>
+      <a class="btn btn-primary btn-lg mt-1"
+          href="{% url 'users:login' %}">Log in &raquo;</a>
+      {% endif %}
+    </div>
+  </div>
+{% endblock page_header %}

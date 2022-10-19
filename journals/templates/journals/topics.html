@@ -1,0 +1,23 @@
+{% extends "journals/base.html" %}
+
+{% block page_header %}
+  <h1>Topics</h1>
+{% endblock page_header %}
+
+
+{% block content %}
+
+<ul class="list-group border-bottom pb-2 mb-4">
+    {% for topic in topics %}
+    <li class="list-group-item border-0"><h3>
+        <a href="{% url 'journals:topic' topic.id %}">{{ topic }}</a>
+      </h3></li>
+    {% empty %}
+    <li class="list-group-item border-0">No topics have been added yet.</li>
+    {% endfor %}
+  </ul>
+  <a class="btn btn-primary mt-2"
+          href="{% url 'journals:new_topic' %}">Add a new topic &raquo;</a>
+  
+
+{% endblock content %}

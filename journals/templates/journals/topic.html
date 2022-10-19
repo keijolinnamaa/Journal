@@ -1,0 +1,34 @@
+{% extends "journals/base.html" %}
+{% load bootstrap5 %}
+
+{% block page_header %}
+  <h1>{{ topic.text }}</h1>
+  <a class="btn btn-primary mt-2 mb-2"
+          href="{% url 'journals:topics' %}">Topics &raquo;</a>
+{% endblock page_header %}
+
+
+{% block content %}
+
+  <a class="btn btn-primary mt-2 mb-2"
+          href="{% url 'journals:new_entry' topic.id %}">Add a new_entry &raquo;</a>
+  <p></p>        
+  <ul>
+    {% for entry in entries %}
+    <div class="card mb-3">
+      <!-- Card header with timestamp and edit link -->
+      <h4 class="card-header">
+        {{ entry.date_added|date:'M d, Y H:i' }}
+        <small><a href="{% url 'journals:edit_entry' entry.id %}">
+          edit entry</a></small>
+      </h4>
+      <!-- Card body with entry text -->
+      <div class="card-body">{{ entry.text|linebreaks }}</div>
+    </div>
+   
+    {% empty %}
+      <li>There are no entries for this topic yet.</li>
+    {% endfor %}
+  </ul> 
+
+{% endblock content %}
